@@ -45,16 +45,27 @@ export default function LoginWithPhone() {
     }
   };
   return (
-    <div>
-      <PhoneInput
-        country={"vn"}
-        value={phoneNumber}
-        onChange={(phone) => setPhoneNumber("+" + phone)}
-      />
-      <div id="recaptcha"></div>
-      <Button onClick={handleSendOTP}>Lấy mã</Button>
-      <Input value={otp} onChange={(e) => setOtp(e.target.value)} />
-      <Button onClick={verifyOTP}>Xác nhận</Button>
+    <div className="flex justify-center items-center h-[100vh]">
+      <form className="flex flex-col gap-3">
+        <h3 className="text-center font-bold text-[20px]">
+          Đăng nhập tài khoản
+        </h3>
+        <PhoneInput
+          country={"vn"}
+          value={phoneNumber}
+          onChange={(phone) => setPhoneNumber("+" + phone)}
+        />
+        <div id="recaptcha"></div>
+        <Button onClick={handleSendOTP}>Lấy mã</Button>
+        <Input
+          placeholder="Nhập mã OTP"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+        />
+        <Button type="primary" className="bg-blue-600" onClick={verifyOTP}>
+          Xác nhận
+        </Button>
+      </form>
     </div>
   );
 }
